@@ -1,0 +1,32 @@
+
+<div class="new-training">
+  <!-- {{exercises | async | json}} -->
+    <div fxLayout fxLayoutAlign='center'>
+        <form #f='ngForm' (ngSubmit) = 'onStartNewTraining(f)'  *ngIf="!loading">
+            <mat-card fxFlex='400px'>
+                
+                <mat-card-title fxLayoutAlign='center'>Time to Start Workout</mat-card-title>
+
+                <mat-card-content fxLayoutAlign='center'>
+                    <mat-form-field>
+                        <mat-label>Select Excersie</mat-label>
+                        <mat-select ngModel name='ex' required ngModel >
+                            <mat-option *ngFor="let ex of exercises" [value] = 'ex.id' >
+        <!-- <p>{{ex.payload.name}}</p> -->
+                                {{ex.name}}
+                            </mat-option >
+                           
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions fxLayoutAlign='center'>
+                    <button mat-raised-button type="submit" color="primary"
+                        [disabled]='f.invalid'>Start</button>
+                </mat-card-actions>
+
+            </mat-card>
+        </form>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+       <!-- <h1>{{exercises | json}}</h1> -->
+    </div>
+</div>

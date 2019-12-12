@@ -1,0 +1,9 @@
+<section fxLayout = 'column' fxLayoutAlign='center center' style="margin-top: 30px;">
+    <h2>{{t.name}}</h2>
+    <mat-progress-spinner mode="determinate" [value]="progress" ></mat-progress-spinner>
+    <h1>{{progress}} %</h1>
+    <p>Go On Boi You Can Do it...</p>
+    <button mat-raised-button color = 'accent' type="button" (click) = 'onStop()' *ngIf="!completed">Stop</button>
+    <button mat-raised-button color = 'accent' type="button" (click) = 'goBack()' *ngIf="completed">Exit</button>
+    
+</section>

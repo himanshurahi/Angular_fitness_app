@@ -1,0 +1,27 @@
+table {
+    width: 80%;
+}
+
+mat-paginator {
+    width: 80%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+
+@media(max-width: 599px) {
+    td.mat-cell {
+        padding: 9px !important;
+       
+        text-align: center !important;
+    }
+
+    table {
+        width: 100%;
+    }
+    mat-paginator {
+        width: 100%;
+    }
+}

@@ -1,0 +1,51 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav mode="over" [opened] = 'open'>
+
+        <mat-nav-list>
+            <a mat-list-item class="nav-item" [routerLink]="['/']" (click)="toggleSideNav()">
+                <mat-icon>home</mat-icon> Home
+            </a>
+            <a mat-list-item class="nav-item" *ngIf="!isAuth" [routerLink]="['/login']" (click)="toggleSideNav()">
+                <mat-icon>lock</mat-icon> Login
+            </a>
+            <a mat-list-item class="nav-item" *ngIf="!isAuth" [routerLink]="['/register']" (click)="toggleSideNav()">
+                <mat-icon>supervisor_account</mat-icon> Register
+            </a>
+            <a mat-list-item class="nav-item" *ngIf="isAuth" (click)='onLogout()'>
+                <mat-icon>exit_to_app</mat-icon> Logout
+            </a>
+            <a mat-list-item class="nav-item" *ngIf="isAuth" [routerLink]="['/training']" (click)="toggleSideNav()">
+                <mat-icon>exit_to_app</mat-icon> Training
+            </a>
+        </mat-nav-list>
+
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- <button (click) = 'open.toggle()'>Show Sidenav</button> -->
+        <mat-toolbar color='primary'>
+            <div fxHide.gt-xs>
+                <!-- <button mat-icon-button (click)=open.toggle()><mat-icon>home</mat-icon></button> -->
+                <mat-icon (click)='toggleSideNav()' style="cursor: pointer;margin-top: 10px;">menu</mat-icon>
+            </div>
+
+
+
+            <div style="margin-left: 5%;">Logo</div>
+            <div fxHide.lt-sm style="margin-right: 5%;" fxFlex fxLayoutAlign='flex-end'>
+                <ul style="list-style-type: none;" fxLayout fxLayoutGap='20px'>
+                    <li> <a [routerLink]="['/']" routerLinkActive="active">Home</a></li>
+                    <li *ngIf="isAuth"> <a [routerLink]="['/training']" routerLinkActive="active">Training</a></li>
+                    <li *ngIf="!isAuth"> <a [routerLink]="['/login']" routerLinkActive="active">Login</a></li>
+                    <li *ngIf="!isAuth"> <a [routerLink]="['/register']" routerLinkActive="active">Register</a></li>
+                    <li *ngIf="isAuth"> <a style="cursor: pointer;" (click)='onLogout()'>Logout</a></li>
+                </ul>
+            </div>
+
+
+
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
